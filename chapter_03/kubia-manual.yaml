@@ -1,0 +1,14 @@
+# To create the pod, run:
+# kubectl create -f ./chapter_03/kubia-manual.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-manual
+spec:
+  containers:
+    - image: poorlydefinedbehaviour/kubia
+      name: kubia
+      ports:
+        - containerPort: 8080
+          protocol: TCP
