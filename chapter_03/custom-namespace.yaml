@@ -1,0 +1,9 @@
+# kubectl create -f ./chapter_03/custom-namespace.yaml
+# The namespace could also be created using:
+# kubectl create namespace  {{namespace_name}}
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  # name of the namespace
+  name: custom-namespace
