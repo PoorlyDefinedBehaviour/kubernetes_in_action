@@ -20,3 +20,17 @@ kubectl expose rc kubia --type=LoadBalancer --name kubia-http
 # Describing a replication controller
 
 kubectl describe replicationcontroller
+
+# Seeing logs from a pod
+
+kubectl logs {{pod_name}}
+
+# Seeing logs from a container
+
+kubectl logs {{pod_name}} -c {{container_name}}
+
+# Port forwarding
+
+<!-- port forwarding my port 8888 to port 8080 in the pod -->
+
+kubectl port-forward kubia-manual 8888:8080
