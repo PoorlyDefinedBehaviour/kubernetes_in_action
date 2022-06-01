@@ -1,0 +1,16 @@
+# kubectl create -f ./chapter_03/kubia-manual-with-labels.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-manual-v2
+  labels:
+    creation_method: manual
+    env: prod
+spec:
+  containers:
+    - image: poorlydefinedbehaviour/kubia
+      name: kubia
+      ports:
+        - containerPort: 8080
+          protocol: TCP
