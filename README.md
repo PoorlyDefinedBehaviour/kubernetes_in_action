@@ -34,3 +34,9 @@ kubectl logs {{pod_name}} -c {{container_name}}
 <!-- port forwarding my port 8888 to port 8080 in the pod -->
 
 kubectl port-forward kubia-manual 8888:8080
+
+# Adding annotations
+
+kubectl annotate pod kubia-manual mycompany.com/someannotation="foo bar"
+
+kubectl describe pod kubia-manual | grep Annotations
