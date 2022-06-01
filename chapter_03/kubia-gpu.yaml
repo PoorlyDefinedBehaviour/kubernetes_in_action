@@ -1,0 +1,13 @@
+# kubectl create -f ./chapter_03/kubia-gpu.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-gpu
+spec:
+  nodeSelector:
+    # This pod must be scheduled on a node that's meant for GPU heavy computation
+    gpu: "true"
+  containers:
+    - image: poorlydefinedbehaviour:kubia
+      name: kubia
