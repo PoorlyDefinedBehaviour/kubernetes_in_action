@@ -1,0 +1,19 @@
+# kubectl create -f ./chapter_04/multi-completion-bach.job.yaml
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: multi-completion-batch-job
+spec:
+  # we want the job to run 5 times
+  # (it will run sequentially if the parallelism option is not configured)
+  completions: 5
+  template:
+    metadata:
+      labels:
+        app: multi-completion-batch-job
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: main
+          image: luksa/batch-job
