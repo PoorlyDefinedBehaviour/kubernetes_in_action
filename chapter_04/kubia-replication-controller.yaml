@@ -1,0 +1,23 @@
+# kubectl create -f ./chapter_04/kubia-replication-controller.yaml
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kubia-replication-controller
+spec:
+  replicas: 3
+  # If a selector is not specified, k8s will set is automatically
+  # based on the pod labels.
+  selector:
+    app: kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+        - name: kubia
+          image: luksa/kubia
+          ports:
+            - containerPort: 8080
+              protocol: TCP
