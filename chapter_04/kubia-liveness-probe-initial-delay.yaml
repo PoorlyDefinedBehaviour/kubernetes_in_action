@@ -1,0 +1,17 @@
+# kubectl create -f chapter_04/kubia-liveness-probe-initial-delay.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-liveness-initial-delay
+spec:
+  containers:
+    - image: luksa/kubia-unhealthy
+      name: kubia
+      # liveness probe restarts the container if it returns an error
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 8080
+        # k8s will wait 15 seconds before executing the first probe
+        initialDelaySeconds: 15
