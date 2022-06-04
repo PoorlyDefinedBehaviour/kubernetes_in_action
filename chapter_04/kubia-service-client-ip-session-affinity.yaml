@@ -1,0 +1,17 @@
+# kubectl create -f ./chapter_04/kubia-service-client-ip-session-affinity.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  # Always redirect client to the same pod based on the client ip
+  sessionAffinity: ClientIP
+  ports:
+    # The port this service will be available on
+    - port: 80
+      # The container port the service will forward to
+      targetPort: 8080
+  selector:
+    # All pods with the app=kubia label will be part of this service
+    app: kubia
