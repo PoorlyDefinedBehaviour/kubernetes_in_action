@@ -1,0 +1,12 @@
+# kubectl create -f ./chapter_05/external-service-external-name.yaml
+
+# Requests made to this service will be forward to someapi.somecompany.com
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-service
+spec:
+  type: ExternalName
+  externalName: someapi.somecompany.com
+  ports:
+    - port: 80
