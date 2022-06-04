@@ -1,0 +1,15 @@
+# kubectl create -f ./chapter_04/kubia-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  ports:
+    # The port this service will be available on
+    - port: 80
+      # The container port the service will forward to
+      targetPort: 8080
+  selector:
+    # All pods with the app=kubia label will be part of this service
+    app: kubia
