@@ -1,0 +1,15 @@
+# kubectl create -f ./chapter_05/kubia-service-load-balancer.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-loadbalancer
+spec:
+  # This type of service obtains a load balancer from the infrastructure
+  # hosting the Kubernetes cluster.
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: kubia
