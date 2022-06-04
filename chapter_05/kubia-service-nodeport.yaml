@@ -1,0 +1,16 @@
+# kubectl create -f ./chapter_05/kubia-service-nodeport.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-nodeport
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 8080
+      # The service will be accessible through this port of each node in the cluster.
+      # NOTE: k8s chooses a port if we do not specify one.
+      nodePort: 30123
+  selector:
+    app: kubia
