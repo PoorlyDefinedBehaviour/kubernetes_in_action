@@ -1,0 +1,15 @@
+# kubectl create -f ./chapter_05/external-service-endpoints.yaml
+
+apiVersion: v1
+kind: Endpoints
+metadata:
+  # The name of the Endpoints object must match the name of the srevice
+  name: external-service
+subsets:
+  - addresses:
+      # The IPs of the endpoints that the service will forward connections to
+      - ip: 11.11.11.11
+      - ip: 22.22.22.22
+    ports:
+      # The target port of the endpoints
+      - port: 80

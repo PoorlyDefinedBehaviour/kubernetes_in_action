@@ -1,4 +1,4 @@
-# kubectl create -f ./chapter_04/kubia-replicaset.yaml
+# kubectl create -f ./chapter_05/kubia-replicaset.yaml
 
 apiVersion: apps/v1
 kind: ReplicaSet

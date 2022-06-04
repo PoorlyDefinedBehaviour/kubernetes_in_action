@@ -1,4 +1,4 @@
-# kubectl create -f ./chapter_04/kubia-service-client-ip-session-affinity.yaml
+# kubectl create -f ./chapter_05/kubia-service-client-ip-session-affinity.yaml
 
 apiVersion: v1
 kind: Service

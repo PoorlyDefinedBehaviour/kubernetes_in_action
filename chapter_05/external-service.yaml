@@ -1,0 +1,10 @@
+# kubectl create -f ./chapter_05/external-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  # The name of the service must match the name of the Endpoints object
+  name: external-service
+spec:
+  ports:
+    - port: 80
