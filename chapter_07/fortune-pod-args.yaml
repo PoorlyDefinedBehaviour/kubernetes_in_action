@@ -1,0 +1,21 @@
+# kubectl create -f ./chapter_07/fortune-pod-args.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortune2s
+spec:
+  containers:
+    - image: poorlydefinedbehaviour/fortune:args
+      args: ["2"]
+      name: html-generator
+      volumeMounts: 
+        - name: html
+          mountPath: /var/htdocs
+      args:
+        - foo
+        - bar
+        - "15"
+  volumes:
+    - name: html
+      emptyDir: {}
