@@ -1,0 +1,16 @@
+# kubectl create -f ./chapter_07/fortune-pod-env-configmap.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortune-env-from-configmap
+spec:
+  containers:
+    - image: luksa/fortune:env
+      name: fortune-env-from-configmap
+      env:
+        - name: INTERVAL
+          valueFrom:
+            configMapKeyRef:
+              name: fortune-config
+              key: sleep-interval
