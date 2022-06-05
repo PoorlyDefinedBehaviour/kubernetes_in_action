@@ -1,0 +1,16 @@
+# kubectl create -f ./chapter_06/mongodb-persistent-volume-claim.yaml
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # The name of the claim is needed when using the claim as a pod volume.
+  name: mongodb-pvc
+spec:
+  resources:
+    requests:
+      # We want 1GiB of storage.
+      storage: 1Gi
+  # Storage will support a single client performing both reads and writes.
+  accessModes:
+    - ReadWRiteOnce
+  storageClassName: ""
