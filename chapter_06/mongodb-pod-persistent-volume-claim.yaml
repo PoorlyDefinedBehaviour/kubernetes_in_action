@@ -1,0 +1,20 @@
+# kubectl create -f ./chapter_06/mongodb-pod-persistent-volume-claim.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongodb
+spec:
+  containers:
+    - image: mongo
+      name: mongodb
+      volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+      ports:
+        - containerPort: 27017
+          protocol: TCP
+  volumes:
+    - name: mongodb-data
+      persistentVolumeClaim:
+        claimName: mongodb-pvc
