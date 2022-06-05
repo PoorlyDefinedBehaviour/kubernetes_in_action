@@ -1,0 +1,12 @@
+# kubectl create -f ./chapter_07/pod-with-private-image.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-pod
+spec:
+  imagePullSecrets:
+    - name: mydockerhubsecret
+  containers:
+    - image: username/private:tag
+      name: main
