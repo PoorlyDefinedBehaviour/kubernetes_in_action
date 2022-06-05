@@ -1,0 +1,23 @@
+# kubectl create -f ./chapter_06/mongodb-pod-nfs.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongodb
+spec:
+  volumes:
+    - name: mongodb-data
+      nfs:
+        # The IP of the server
+        server: 1.2.3.4
+        # The path exported by the server
+        path: /some/path
+  containers:
+    - image: mongo
+      name: mongodb
+      volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+      ports:
+        - containerPort: 27017
+          protocol: TCP
