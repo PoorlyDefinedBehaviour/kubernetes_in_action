@@ -1,0 +1,16 @@
+# kubectl create -f ./chapter_07/fortune-pod-env-configmap-env-from.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortune-envfrom-configmap
+spec:
+  containers:
+    - image: luksa/fortune:env
+      name: fortune-env-fromconfigmap
+      envFrom:
+        # Pass every key value pair in the ConfigMap as environment variables.
+        # Each variable will be prefixed by CONFIG_.
+        - prefix: CONFIG_
+          configMapRef:
+            name: fortune-config
