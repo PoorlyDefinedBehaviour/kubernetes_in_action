@@ -13,4 +13,5 @@ spec:
   # Storage will support a single client performing both reads and writes.
   accessModes:
     - ReadWRiteOnce
+  # Avoid provisioning a new PersistentVolume
   storageClassName: ""

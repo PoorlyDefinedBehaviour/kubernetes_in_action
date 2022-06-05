@@ -1,0 +1,13 @@
+# kubectl create -f ./chapter_06/mongodb-pvc-dp-nostorageclass.yaml
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc2
+spec:
+  # Since a storageClassName is not being specified, the default StorageClass will be used.
+  resources:
+    requests:
+      storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
