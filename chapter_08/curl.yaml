@@ -1,0 +1,11 @@
+# kubectl create -f ./chapter_08/curl.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl
+spec:
+  containers:
+    - name: main
+      image: poorlydefinedbehaviour/image-with-curl
+      command: ["sleep", "9999999"]
