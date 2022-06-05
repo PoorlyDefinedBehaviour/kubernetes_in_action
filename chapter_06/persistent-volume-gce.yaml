@@ -1,0 +1,17 @@
+# kubectl create -f ./chapter_06/persistent-volume-gce.yaml
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+  # After the claim is released, the PersistentVolume should not be deleted.
+  persistentVolumeReclaimPolicy: Retain
+  gcePersistentDisk:
+    pdName: mongodb
+    fsType: ext4
