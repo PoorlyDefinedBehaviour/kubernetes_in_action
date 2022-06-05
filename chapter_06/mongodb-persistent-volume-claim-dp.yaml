@@ -1,0 +1,14 @@
+# kubectl create -f ./chapter_06/mongodb-persistent-volume-claim-dp.yaml
+
+apiVesion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc
+spec:
+  # This PersistentVolumeClaim requests the custom storage class.
+  storageClassName: fast
+  resources:
+    requests:
+      storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
