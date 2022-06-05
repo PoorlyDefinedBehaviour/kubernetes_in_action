@@ -1,0 +1,13 @@
+# kubectl create -f ./chapter_08/curl-with-ambassador.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl-with-ambassador
+spec:
+  containers:
+    - name: main
+      image: poorlydefinedbehaviour/image-with-curl
+      command: ["sleep", "9999999"]
+    - name: kubernetes-api-ambassador
+      image: luksa/kubectl-proxy:1.6.2
