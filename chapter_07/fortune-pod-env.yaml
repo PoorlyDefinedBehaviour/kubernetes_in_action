@@ -1,0 +1,13 @@
+# kubectl create -f ./chapter_07/fortune-pod-env.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortune-pod-env
+spec:
+  containers:
+    - image: poorlydefinedbehaviour/fortune:env
+      name: html-generator
+      env:
+        - name: INTERVAL
+          value: "30"
