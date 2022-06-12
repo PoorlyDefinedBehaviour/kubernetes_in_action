@@ -1,0 +1,13 @@
+# kubectl apply -f ./chapter_13/pod-wih-host-pid-and-ipc.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-host-pid-and-ipc
+spec:
+  hostPID: true
+  hostIPC: true
+  containers:
+    - name: main
+      image: alpine
+      command: ["/bin/sleep", "9999999"]
