@@ -1,0 +1,16 @@
+# kubectl apply -f ./chapter_12/creating-cluster-role.yaml
+# kubectl create clusterrole pv-reader --verb=get,list --resource=persistentvolumes
+# kubectl get clusterrole pv-reader -o yaml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pv-reader
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - persistentvolumes
+    verbs:
+      - get
+      - list
