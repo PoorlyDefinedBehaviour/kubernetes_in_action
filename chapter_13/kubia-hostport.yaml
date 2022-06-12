@@ -1,0 +1,14 @@
+# kubectl apply -f ./chapter_13/kubia-hostport.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-hosport
+spec:
+  containers:
+    - image: luksa/kubia
+      name: kubia
+      ports:
+        - containerPort: 8080
+          hostPort: 9000
+          protocol: TCP
