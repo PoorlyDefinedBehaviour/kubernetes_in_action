@@ -1,0 +1,15 @@
+# kubectl apply -f ./chapter_13/pod-drop-chown-capability.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-drop-chown-capability
+spec:
+  containers:
+    - name: main
+      image: alpine
+      command: ["/bin/sleep", "9999999"]
+      securityContext:
+        capabilities:
+          drop:
+            - CHOWN
