@@ -1,0 +1,15 @@
+# kubectl apply -f ./chapter_13/pod-add-settime-capability.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-add-settime-capability
+spec:
+  containers:
+    - name: main
+      image: alpine
+      command: ["/bin/sleep", "9999999"]
+      securityContext:
+        capabilities:
+          add:
+            - SYS_TIME
