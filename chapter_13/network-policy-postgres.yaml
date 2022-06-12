@@ -1,0 +1,18 @@
+# kubectl apply -f ./chapter_13/network-policy-postgres.yaml
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: postgres-netpolicy
+spec:
+  podSelector:
+    matchLabels:
+      app: database
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: webserver
+      ports:
+        # Connections are allowed to this port
+        - port: 5432
