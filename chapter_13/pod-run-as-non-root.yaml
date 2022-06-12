@@ -1,0 +1,14 @@
+# kubectl apply -f ./chapter_13/pod-run-as-non-root.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-run-as-non-root
+spec:
+  containers:
+    - name: main
+      image: alpine
+      command: ["/bin/sleep", "9999999"]
+      securityContext:
+        # Container can run as any user except root.
+        runAsNonRoot: true
