@@ -1,0 +1,17 @@
+# kubectl apply -f ./chapter_13/psp-privileged.yaml
+
+apiVersion: extensions/v1
+kind: PodSecurityPolicy
+metadata:
+  name: privileged
+spec:
+  privileged: true
+  runAsUser:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  volumes: "*"
