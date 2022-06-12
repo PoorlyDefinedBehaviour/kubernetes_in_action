@@ -1,0 +1,14 @@
+# kubectl apply -f ./chapter_13/pod-as-user-guest.yaml
+
+apiVesion: v1
+kind: Pod
+metadata:
+  name: pod-as-user-guest
+spec:
+  containers:
+    - name: main
+      image: alpine
+      command: ["/bin/sleep", "9999999"]
+      securityContext:
+        # id 405 corresponds to the guest user in alpine
+        runAsUser: 405
