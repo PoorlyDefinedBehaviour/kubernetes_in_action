@@ -1,0 +1,20 @@
+# kubectl apply -f ./chapter_13/pod-with-readonly-filesystem.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-readonly-filesystem
+spec:
+  containers:
+    - name: main
+      image: alpine
+      command: ["/bin/sleep", "9999999"]
+      securityContext:
+        readOnlyRootFilesystem: true
+      volumeMounts:
+        - name: my-volume
+          mountPath: /volume
+          readOnly: false
+  volumes:
+    - name: my-volume
+      emptyDir: {}
