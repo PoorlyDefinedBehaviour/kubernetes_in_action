@@ -1,0 +1,13 @@
+# kubectl apply -f ./chapter_13/pod-with-host-network.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-host-network
+spec:
+  # Will use the host node network namespace
+  hostNetwork: true
+  containers:
+    - name: main
+      image: alpine
+      command: ["/bin/sleep", "9999999"]
