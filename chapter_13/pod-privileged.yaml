@@ -1,0 +1,14 @@
+# kubectl apply -f ./chapter_13/pod-privileged.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-privileged
+spec:
+  containers:
+    - name: main
+      image: alpine
+      command: ["/bin/sleep", "9999999"]
+      securityContext:
+        # Allow container to get full access to the node's kernel.
+        privileged: true
