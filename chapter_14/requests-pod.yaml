@@ -1,0 +1,16 @@
+# kubectl apply -f ./chapter_14/chapter_14/requests-pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: requests-pod
+spec:
+  containers:
+    - image: busybox
+      command: ["dd", "if=/dev/zero", "of=/dev/null"]
+      name: main
+      resources:
+        requests:
+          # The container requests 200 millicores (1/5 of a single CPU core's time)
+          cpu: 200m
+          memory: 10Mi
