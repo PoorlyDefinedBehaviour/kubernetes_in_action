@@ -1,0 +1,11 @@
+# kubectl apply -f ./chapter_14/quota-storage.yaml -n my-namespace
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: storage
+spec:
+  hard:
+    requests.storage: 500Gi
+    ssd.storageclass.storage.k8s.io/requests.storage: 300Gi
+    standard.storageclass.storage.k8s.io/requests.storage: 1Ti
