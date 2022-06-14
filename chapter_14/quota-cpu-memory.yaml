@@ -1,0 +1,16 @@
+# kubectl apply -f ./chapter_14/quota-cpu-memory.yaml -n my-namespace
+#
+# A ResourceQuota object applies to the namespace it is created in.
+# It applies to all the pod's resource requests and limits in total and
+# not to each individual pod or container separately.
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: cpu-and-mem
+spec:
+  hard:
+    requests.cpu: 400m
+    requests.memory: 200Mi
+    limits.cpu: 600m
+    limits.memory: 500Mi
