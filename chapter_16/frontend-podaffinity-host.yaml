@@ -1,0 +1,20 @@
+# kubectl apply ./chapter_16/frontend-podaffinity-host.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 5
+  template:
+    ...
+    spec:
+      affinity:
+        podAffinity:
+          # These pods must be deployed on the same node as the pods that have
+          # the app=backend label.
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchLabels:
+                  app: backend
