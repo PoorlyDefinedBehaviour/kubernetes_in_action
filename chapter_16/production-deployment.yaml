@@ -1,0 +1,30 @@
+# kubectl apply -f ./chapter_16/production-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: kubia
+  template:
+    metadata:
+      name: kubia
+      labels:
+        app: kubia
+    spec:
+      tolerations:
+        - key: node-type
+          operator: Equal
+          value: production
+          effect: NoSchedule
+      containers:
+        - image: luksa/kubia:v1
+          name: nodejs
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 1
