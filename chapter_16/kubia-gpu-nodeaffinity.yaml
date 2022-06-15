@@ -1,0 +1,19 @@
+# kubectl apply -./chapter_16/kubia-gpu-nodeaffinity.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-gpu
+spec:
+  containers:
+    - image: poorlydefinedbehaviour:kubia
+      name: kubia
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoreDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: gpu
+                operator: In
+                values:
+                  - "true"
