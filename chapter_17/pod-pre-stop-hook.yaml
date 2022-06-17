@@ -1,0 +1,15 @@
+# kubectl apply -f ./chapter_17/chapter_17/pod-pre-stop-hook.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-poststart-hook
+spec:
+  containers:
+    - image: luksa/kubia
+      name: kubia
+      lifecycle:
+        preStop:
+          httpGet:
+            port: 8080
+            path: shutdown
