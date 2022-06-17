@@ -1,0 +1,21 @@
+# kubectl apply ./chapter_16/frontend-pod-antiy-affinity-host.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchLabels:
+                  app: frontend
+      containers: ...
